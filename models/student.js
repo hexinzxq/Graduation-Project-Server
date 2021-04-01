@@ -132,9 +132,9 @@ let studentSchma = new Schema({
 // var stu = mongoose.model('Student' , studentSchma)
 // var stu1 = new stu({
 //     stuAvatar:'../public/img/defaultAvatar.png',
-//     stuEnrollmentNumber : "L511826198711230014",
-//     stuIdentifyNum : "513127198711230567",
-//     stuName : "张三",
+//     stuEnrollmentNumber : "L511826198711230018",
+//     stuIdentifyNum : "513127198711230554",
+//     stuName : "李四三",
 //     stuPassName : "张全蛋",
 //     stuGender : 0,
 //     stuAge : 33,
