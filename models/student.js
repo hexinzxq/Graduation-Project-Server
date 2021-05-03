@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 // 链接数据库
 mongoose.connect('mongodb://localhost/bs', {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
 })
 
 // 创建数据库组织结构Schema
@@ -15,7 +16,7 @@ let studentSchma = new Schema({
     stuAvatar : {
         required : true,
         type : String,
-        default:'../public/img/defaultAvatar.png'
+        default:'https://z3.ax1x.com/2021/05/01/gZ99Wn.jpg'
     },
     // 学生学籍号
     stuEnrollmentNumber: {
@@ -93,7 +94,7 @@ let studentSchma = new Schema({
         type: String
     },
     // 学生健康状况(0表示健康，-1表示不健康，1表示良好)
-    stuHelth: {
+    stuHealth: {
         required: true,
         type: Number,
         enum: [-1, 0, 1],
@@ -108,7 +109,7 @@ let studentSchma = new Schema({
         default: '123456'
     },
     // 学生荣誉(0代表没有，1代表有)
-    stuHonor : {
+    stuHonor : {        
         required : true,
         type : Number,
         enum : [0,1],
@@ -125,19 +126,25 @@ let studentSchma = new Schema({
     roleId : {
         type : Number,
         default : 0
+    },
+    // 错误申报识别码(0为未提交错误申报，1为提交了错误申报信息)
+    distinguishCode: {
+        type: Number,
+        enum: [0,1],
+        default: 0
     }
 })
 
 //测试能否添加学生成功
 // var stu = mongoose.model('Student' , studentSchma)
 // var stu1 = new stu({
-//     stuAvatar:'../public/img/defaultAvatar.png',
-//     stuEnrollmentNumber : "L511826198711230018",
-//     stuIdentifyNum : "513127198711230554",
-//     stuName : "李四三",
-//     stuPassName : "张全蛋",
+//     stuAvatar:'https://z3.ax1x.com/2021/05/01/gVXtxS.jpg',
+//     stuEnrollmentNumber : "L5118262200311231001",
+//     stuIdentifyNum : "513127198711230786",
+//     stuName : "哆啦C梦", 
+//     stuPassName : "猫猫",
 //     stuGender : 0,
-//     stuAge : 33,
+//     stuAge : 18,
 //     stuAddress : "四川省雅安市芦山县太平镇钟灵村123号",
 //     stuPoliticsStatus : 1,
 //     stuNativePlace : "四川·芦山",
@@ -146,10 +153,11 @@ let studentSchma = new Schema({
 //     stuHomeAddress : "四川省雅安市芦山县太平镇钟灵村123号",
 //     stuPostCode : "657033",
 //     stuEducationExperience : "2006.9-2011.6：太平小学；2011.9-2014.6：芦山县初级中学；2014.9-2017.6：天全县高级中学；2017.9-2021.6：成都大学",
-//     stuHelth : "1",
+//     stuHealth : 1,
 //     stuPassword : "123456",
 //     stuHonor : "0",
-//     stuPunishment : "0"
+//     stuPunishment : "1",
+//     distinguishCode: 0
 // })
 // stu1.save(function(err,ret){
 //     if(err){

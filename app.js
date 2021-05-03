@@ -7,7 +7,11 @@ const bodyParser = require('body-parser',{useNewUrlParser:true})
 const LoginRouter = require('./routes/login')
 // 引入学籍路由
 const SchoolRollRouter = require('./routes/schoolRollInfo')
+const stuPunishInfoRouter = require('./routes/stuPunishInfo')
+const stuPointInfoRouter = require('./routes/stuPointExcel')
 var session = require('express-session')
+var moment = require('moment');
+moment().format();
 
 const app = express()
 
@@ -44,7 +48,9 @@ app.use(stuInfoRouter)
 app.use(LoginRouter)
 // 挂载学籍信息路由
 app.use(SchoolRollRouter)
+app.use(stuPunishInfoRouter)
+app.use(stuPointInfoRouter)
 
 app.listen(8888,function(){
-    console.log('8888端口运行中......');
+    console.log('大学生档案管理系统服务器运行中......（8888端口），测试服务器请访问127.0.0.1:8888');
 })

@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
 // 链接数据库
 mongoose.connect('mongodb://localhost/bs', {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 })
 
 // 创建数据库组织结构Schema
